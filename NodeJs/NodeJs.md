@@ -1,4 +1,4 @@
-#### NodeJs是什么
+### NodeJs是什么
 
 - nodeJs不是一门语言，不是库，也不是框架
 
@@ -22,7 +22,9 @@
 
 3.lightweght and efficient 轻量级和高效
 
-#### file-system(文件系统)
+### 核心模块
+
+file-system(文件系统)
 
 - readFile-异步读取文件
 
@@ -52,18 +54,16 @@
 
 ```javascript
 const server = http.createServer();
-
-  server.on('request',callback(req,res){
-
- 	//req:请求对象
+server.on('request',callback(req,res){
+ 	//	req:请求对象
         req.url
-    //res:响应对象-可以给客户端发送响应信息
+    //	res:响应对象-可以给客户端发送响应信息
     //  res.writeHead(200,{'Content-Type','text/plain;charset=utf-8'}) 
 	//	res.setHeader('Content-Type','text/plain;charset-utf-8')
 	//	res.end(data)
   })
 
-  server.listen(3000,callback(){
+  server.listen(3000,function(){
 
   })  
 ```
@@ -98,4 +98,18 @@ url.parse(http://god.com:3001/admin/zhangsan?name=kobe&age=18',true);
   pathname: '/admin/zhangsan',
   path: '/admin/zhangsan?name=kobe&age=18',
   href: 'http://god.com:3001/admin/zhangsan?name=kobe&age=18' 
+
+### art-template
+
+art-template不仅可以在浏览器使用，也可以在node中使用
+
+```javascript
+//变量
+{{ name }}
+//数组
+{{ each list }}
+{{ $value }}
+{{ /each }}
+
+```
 
