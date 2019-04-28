@@ -113,3 +113,28 @@ art-template不仅可以在浏览器使用，也可以在node中使用
 
 ```
 
+#### express-art-template
+
+安装：
+
+```shell
+npm install express express-art-template
+```
+
+配置：
+
+```javascript
+//注意：先配置好模板引擎
+app.engine('html',require('express-art-template'))
+app.use(router);
+
+```
+
+使用：
+
+```javascript
+res.render('index.html',{name:"hello art-teplate"})
+```
+
+
+
