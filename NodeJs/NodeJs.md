@@ -110,6 +110,9 @@ art-template不仅可以在浏览器使用，也可以在node中使用
 {{ each list }}
 {{ $value }}
 {{ /each }}
+//条件  
+{{if value}} ... {{/if}}
+{{if v1}} ... {{else if v2}} ... {{/if}} 
 
 ```
 
