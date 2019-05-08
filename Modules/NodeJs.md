@@ -29,7 +29,7 @@ file-system(文件系统)
 - readFile-异步读取文件
 
   ```javascript
-  fs.readFile(url,callback(err,data){
+  fs.readFile(url,'utf8',callback(err,data){
           //文件存储的数据是二进制
           //打印出来的是一串Buffer...16进制
           //因此需要 data.toString()转化为开发者能够识别的格式
@@ -99,7 +99,21 @@ url.parse(http://god.com:3001/admin/zhangsan?name=kobe&age=18',true);
   path: '/admin/zhangsan?name=kobe&age=18',
   href: 'http://god.com:3001/admin/zhangsan?name=kobe&age=18' 
 
-### art-template
+### Express
+
+安装:
+
+```shell
+npm install express
+```
+
+使用:
+
+```javascript
+let app = require('express')()
+```
+
+
 
 art-template不仅可以在浏览器使用，也可以在node中使用
 
@@ -140,4 +154,24 @@ res.render('index.html',{name:"hello art-teplate"})
 ```
 
 
+
+### MongoDB
+
+- 安装
+
+- 启动
+
+  ```powershell
+  #mongodb默认执行 mongod 命令所处盘符目录下的 /data/db 作为自己的数据存储目录
+  #所以需要手动新建一个
+  mongod
+  ```
+
+- 如果想要修改默认的存储目录，可以
+
+  ```shell
+  mongod --dbpath=数据库存储目录
+  ```
+
+  
 

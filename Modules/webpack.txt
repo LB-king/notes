@@ -1,0 +1,50 @@
+第一部分：webpack
+安装
+npm install -g webpack
+npm install webpack --save-dev
+npm info webpack
+npm install webpack@1.12. --save-dev
+npm install webpack-dev-server --save-dev
+
+使用
+module.exports = {} // module.js
+require('./module.js')// entry.js
+webpack entry.js bundle.js // 编译 entry.js 并打包到 bundle.js
+
+插件
+npm install html-webpack-plugin --save-dev // 生成html
+
+配置文件
+webpack.config.js默认配置文件
+
+
+
+配置webpack-dev-server
+可以server我们pack以后的代码，并且当代码更新的时候自动刷新浏览器。
+npm install webpack-dev-server --save-dev
+
+安装完毕后 在config中添加配置
+module.exports = {
+  ....
+  devServer: {
+    historyApiFallback: true,
+    hot: true,
+    inline: true,
+    progress: true,
+  },
+  ...
+}
+
+loader
+添加CSS样式
+npm install css-loader style-loader --save-dev
+module: {
+    loaders: [
+      {
+        test: /\.css$/,
+        loaders: ['style', 'css'],
+        include: APP_PATH
+      }
+    ]
+  },
+；

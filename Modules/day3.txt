@@ -1,0 +1,82 @@
+第一部分：express
+1. 下载express
+    01. npm install express --save
+2. 引入express
+    01. require('express')
+    02. 中间件
+        001. body-parser
+            0001. 用于处理参数
+            0002. body参数，querystring参数，params路由参数
+            0003. urlencoded({extended: false}), 不用querystring处理参数，用qs处理
+3. 请求
+    01. get
+    02. post
+    03. put
+    04. delete
+4. 参数接收
+    01. 路由传参(/:)
+        001. path/:id     path/2
+        002. 接收方式：req.params
+    02. body传参({})
+        001. path         body:{id:2}
+        002. 接收方式：req.body
+    03. queryString参数(?)
+        001. path?id=2
+        002. 接收方式：req.query
+5. 静态文件
+    01. app.use(express.static(''))
+    02. 可以多次调用
+6. 错误页处理
+    01. app.use(function(req, res)){
+        sendfile(error);
+    }
+7. 路由
+    01. routes
+8. 模板
+    01. app.set('view engine', 'jade');
+    02. app.set('views','path')
+
+
+第二部分: 生成express应用
+1. 命令行方式
+    01. 安装
+        npm install -g express-generator
+    02. 创建应用
+        express --view=hbs /tmp/foo && cd /tmp/foo
+    03. 安装项目依赖包
+        npm install
+    04. 启动express.js应用
+        npm start
+2. webstorm生成
+
+*********************************************8
+第一部分：express项目搭建
+1. 安装
+    01. 安装express，全局安装-g
+        001. npm install -g express
+    02. 安装express-generator，全局安装-g
+    express4.0之后把创建一个APP的功能分离出来为express-generator，没它你创建不了应用程序，需要全局安装-g
+        001. npm install -g express-generator
+    03. 创建express项目
+        01. express JadeWebApp  //默认是jade引擎
+        02. express -e EjsWebApp //要创建ejs引擎用下面的命令
+    04. install dependencies
+        01. cd WebApp && npm install
+    05. run the app
+        01. SET DEBUG=WebApp:* & npm start
+        02. node ./bin/www
+2. 项目介绍
+    2.1. 项目结构介绍
+
+    2.2. 项目内容介绍
+
+练习： 用户注册
+1. 用户注册表单，点击提交实现数据提交到后台接口
+2. 后台接口接受数据，验证用户名密码输入不为空后，将数据写入user.log文件中
+3. user.log文件的格式
+2017/2/16 11:48:42  用户名：Jerry 密码：123123
+2017/2/16 11:48:42  用户名：Terry 密码：123123
+2017/2/16 11:48:42  用户名：Tom 密码：123123
+
+注意：每人写一个200字的ajax交互心得
+123.123.123.123/user/get

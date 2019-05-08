@@ -1,0 +1,129 @@
+第一部分：环境安装
+1. 下载安装nodejs
+    1.1. http://www.nodejs.org/zh-cn/
+    1.2. http://www.nodejs.org/en/
+    1.3. msi版本的用来安装
+    1.4. tar.gz版本用来配置webstorm
+
+2. 了解npm包管理工具
+    2.1. 查看安装包：
+        001. npm ls
+        002. npm ls -g
+            C:\Users\Leslie\AppData\Roaming\npm\node_modules
+    2.2. npm初始化
+        001. npm init
+        002. 文件夹名字不可以包含大写字母
+        003. 文件夹名字不可有空格
+    2.3. 下载bower包管理工具
+        001. npm install bower -g
+             npm i bower -g
+    2.4. 特定版本
+        001. npm install body-parser@1.15.1
+    2.5. dev节点 devDependencies
+        001. npm install body-parser --save-dev
+    2.6. 默认节点 dependencies(依赖)
+        001. npm install body-parser --save
+    2.7. 批量拉包
+        001. npm install => dependencies和devDependences
+        002. npm install --prod => dependencies
+        003. npm install --only=dev =>devDependencies
+    2.8. 移除包（卸载包）
+        001. npm uninstall packageName 当前目录
+        002. npm uninstall packageName -g 全局目录
+
+---------------------------------------------------
+
+第二部分：hello-world
+1. 在cmd或者git bash里运行： node 01.js
+    1.1. 如果被占用，则把代理清除
+        001. npm config set proxy null
+    1.2. 通过npm下载框架express
+---------------------------------------------------
+
+第三部分：基本组件 console
+1. console.log(); 打印日志
+    1.1. 生成日志信息文件
+        001. node demo.js>demo.log
+    1.2. 占位符
+        001. %d %s
+2. console.info(); 打印信息
+3. console.warn(); 打印警告
+4. console.error(); 打印错误
+5. console.dir 打印信息类型
+6. console.time('tagName'); 开始计时
+7. console.timeEnd("tagName"); 结束计时
+8. console.trace(); 跟踪函数执行过程
+9. console.assert(表达式); 断言
+-------------------------------------------------------------------------------
+第四部分： http
+1. 引入模块http
+    1.1. require('http');
+2. 创建服务器：createServer
+    1.1. var server = http.createServer(function(req, res){})
+        1.1.1 writeHead: 响应头
+            001. res.writeHead=object;
+            002. 200-配置
+                1. text/html: 以html形式返回
+                2. text/json: 以json格式返回
+                3. text/xml: 以xml格式返回
+                4. text/plain: 原样返回
+                5. 'txt': 'text/plain'
+                    'html':'text/html'
+                    'css':'text/css'
+                    'xml':'application/xml'
+                    'json':'application/json'
+                    'js':'application/javascript'
+                    'jpg':'image/jpeg'
+                    'jpeg':'image/jpeg'
+                    'gif':'image/gif'
+                    'png':'image/png'
+                    'svg':'image/svg+xml'
+
+                6. charset=utf-8  // 设置编码
+            003. 301-{'Location':'新地址'}   // 永久重定向 statusCode: 301
+    1.2. 监听： listen
+        1.2.1. server.listen(port, hostname, callback);
+            001. port: 监听端口
+            002. hostname: 监听主机名
+            003. callback: 回掉函数
+                function(err){console.log(err);}
+-------------------------------------------------------------------
+第五部分：Events
+1. 引入模块events
+    1.1. var events=require('events');
+2. 实例化事件对象
+    2.1. EventEmitter： 用于注册和处理事件
+    2.2. var mmyevent = new events.EventEmitter();
+3. 监听: on
+    3.1. myevent.on(evtName, callback(data));
+    3.2. evtName: 事件名称
+    3.3. callack(data)：回掉函数
+4. 触发：emit
+    4.1. myevent.emit(evtName, data)
+    4.2. evtName: 事件名称
+    4.3. data: 传递数据
+5. 移除监听：removeListener
+    5.1. myevent.removeListener(evtName, functionName);
+    5.2. evtName: 事件名称
+    5.3. functionName: 事件处理函数名
+6. 移除事件所有监听：removeAllListeners
+    6.1. myevent.removeAllListeners(evtName)
+    6.2. evtName：事件名称
+7. 获取监听数量: listenerCount
+    7.1. myevent.listenerCount(evtName)
+    7.2. evtName：事件名称
+8. 设置最大监听数量：setMaxListeners
+    8.1. myevent.setMaxListeners(n)
+-----------------------------------------------------------------------------------------------
+第六部分：练习
+创建一个监听 on/addListener
+打印出监听的函数数量：ListenerCount
+移除掉监听函数，removeListener
+执行监听 emit
+
+
+
+npm install supervisor -g
+supervisor **.js
+
+

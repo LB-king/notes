@@ -1,0 +1,182 @@
+第一部分：fs模块
+1. 引入fs模块
+    1.1. require('fs);
+2. 写文件
+    01. 异步写：writeFile
+        001. fs.writeFile(path,data[,option],callback)
+        002. path:文件路径
+        003. data: 写的内容, string/buffer
+        004. option: 配置参数：比如：{encoding: 'utf-8'}
+        005. callback(err): 回调函数
+    02. 同步写：writeFileSync
+        001. fs.writeFileSync(path, data[,option])
+3. 追加内容
+    01. 异步追加内容：appendFile
+        001. fs.appendFile(path,data[,option],callback)
+    02. 同步追加内容：appendFileSync
+        001. fs.appendFileSync(path,data[,option])
+4. 创建文件夹
+    01. 异步创建：mkdir
+        001. fs.mkdir(path, callback)
+    02. 同步创建：mkdirSync
+        001. fs.mkdirSync(path)
+5. 读文件
+    01. 异步读取：readFile
+        001. fs.readFile(file[,option], callback)
+        002. path: 文件路径
+        003. option: 'utf-8' 'binary'
+        004. callback(err, data):读取的buffer
+    02. 同步读取：readFileSync
+        001. fs.readFileSync(file[,option])
+6. 读文件夹
+    01. 异步读取：readdir
+        001. fs.readdir(path,callback)
+    02. 同步读取：readdirSync(path)
+        002. fs.readdirSync(path)
+7. 判断文件/文件夹是否存在
+    01. 异步判断：exists
+        001. fs.exists(path, callback)
+        002. callback(res): 回调，res: true/false
+    02. 同步判断：existsSync
+        001. fs.existsSync(path)
+8. 删除文件/文件夹
+    01. 删除文件：unlink/unlinkSync
+    02. 删除文件夹：rmdir/rmdirSync
+9. 更改文件/文件夹路径
+    01. 异步：rename
+        001. fs.rename(oldpath, newpath, callback)
+    02. 同步：renameSync
+        001. fs.renameSync(oldpath, newpath)
+10. 监听文件夹
+    01. fs.watch(dirname, listener);
+    02. dirname: 文件夹路径/文件路径
+    03. listener(event, filename)
+    04. event: 'rename/change'
+    05. filename: 改变的文件名
+11. 监听文件
+    01. fs.watchFile(filename, listener)
+    02. filename: 文件路径
+    03. listener(current, prev)
+    04. current: 当前文件
+    05. prev: 之前文件
+    06. fs.unwatchFile(filename, listener)
+12. 其他
+    01. 获取物理路径：realpath(path, callback(err, resolvePath))/realpathSync(path)
+    02. 获取文件信息：stat(path, callback(err, stat))
+    03. 打开文件：fs.open(path, flags, callback(err,fd))
+        001. flags:
+            r    以读取模式打开文件。如果文件不存在抛出异常。
+            r+   以读写模式打开文件。如果文件不存在抛出异常。
+            rs   以同步的方式读取文件。
+            rs+  以同步的方式读取和写入文件。
+            w    以写入模式打开文件，如果文件不存在则创建。
+            wx   类似 'w'，但是如果文件路径存在，则文件写入失败。
+            w+   以读写模式打开文件，如果文件不存在则创建。
+            wx+  类似 'w+'， 但是如果文件路径存在，则文件读写失败。
+            a    以追加模式打开文件，如果文件不存在则创建。
+            ax   类似 'a'， 但是如果文件路径存在，则文件追加失败。
+            a+   以读取追加模式打开文件，如果文件不存在则创建。
+            ax+  类似 'a+'， 但是如果文件路径存在，则文件读取追加失败。
+    04. 写文件：fs.write(fd, buffer, offset, length, position,callback(err, bytes))
+    05. 读文件：fs.read(fd, buffer, offset, length, position, callback(err, bytes))
+    06. 关闭文件：fs.close(fd,callback(err))
+----------------------------------------------------------------------
+第二部分：url模块
+1. 用于解析，生成，拼接url
+2. http://127.0.0.1:3000/list.html?aa=10&bb=20#/ddd
+    01. url.parse(str, parsequerystring)
+    02. parsequerystring: true/false
+        001. 如果为true，则url.query={aa: 10, bb: 20}
+        002. 如果为false,则url.query='aa=10&bb=20'
+    03. url.format(myurl) // 转换为字符串
+3. url实体字段：
+    01.protocol：协议
+    02.host：主机，包含端口
+    03.hostname：主机名
+    04.port：端口
+    05.hash：hash参数
+    06.search：?参数
+    07.query：url参数
+    08.pathname：路径
+    09.path：含参数的路径
+    10.href：完整链接
+---------------------------------------------------------------------------
+第三部分：querystring
+1. parse(obj,sep,eq,option)
+    01. option: maxKeys:1000
+    02. sep:参数之间的分隔符
+    03. eq:参数的赋值连接符
+2. stringify(obj,sep,eq,option)
+3. escape
+    01. 编码
+4. unescape
+    01. 解码
+----------------------------------------------------------------------
+第四部分：path
+1. normalize:
+    01. 标准化路径
+    02. 生成物理路径
+2. join
+    01. 整合路径
+    02. join(path1, path2, ...)
+3. resolve
+    01. 解析为绝对路径
+    02. resolve(cd1, cd2, cd3, ...)
+    03. 相当于一次次的调用cd命令
+4. relative
+    01. 解析相对路径
+    02. relative(from, to)
+    03. 解析从from到to的相对路径
+        001. from为文件夹路径
+5. dirname
+    01. 路径所在文件夹路径
+    02. dirname(path)
+6. basename
+    01. 路径的最后一部分
+    02. basename(path[,ext])
+    03. ext:想要去掉的文件后缀名
+7. extname
+    01. 后缀名
+    02. extname(path)
+8. sep
+    01. 获取平台的文件路径分隔符
+    02. path.sep
+9. delimiter
+    01. 获取平台的路径分割符，比如：c:\ ;
+    02. path.delimiter
+-------------------------------------------------------------------------
+第五部分：路径的系统变量
+1. __dirname
+    01. 当前文件夹
+2. __filename
+    01. 当前执行文件的完整路径
+--------------------------------------------------------------------
+第六部分：process
+1. 属性
+    01. pid：进程号
+    02. version：nodejs版本
+    03. platform：当前系统平台
+    04. title：进程标题
+    05. argv：当前进程的命令行参数组
+    06. env：当前环境变量
+    07. execPath：运行当前进程的可执行程序的绝对路径
+    08. stdout：控制标准输出
+        001. write
+2. 方法
+    01. exit：退出进程
+    02. cwd：进程运行的文件夹
+    03. chdir: 更改工作目录
+    04. nextTick：延迟执行
+    05. setImmediate：延迟执行，全局的方法，优先级低于nextTick
+--------------------------------------------------------------------
+第七部分：练习
+1. fs+path练习
+    01. 判断当前路径下的public是否存在，不存在则创建
+    02. 判断public下的index.html文件是否存在，不存在则创建<h1>index</h1>
+    03. 创建成功，取出来的数据，添加到当前路径下的static文件夹下的index.html里
+
+
+app.js
+static/index.html
+static/about.html
+static/error.html  // 404

@@ -1,0 +1,102 @@
+第一部分：安装mongodb
+    >1.下载安装mongodb
+        >01.https://www.mongodb.com/download-center#community
+        >02.mongodb
+    >2.配置数据目录
+        >01.创建数据目录：mkdir c:\data
+        >02.自定义数据目录：mongod --dbpath "c:\data"
+        >03.mongod.exe 数据库服务端命令
+        >04.mongo.exe  数据库客户端命令
+
+    >3.添加/删除windows服务里面
+        >01.添加服务
+            >001.mongod.exe
+            >002.设置数据存放路径：--dbpath "c:\data\db"
+            >003.设置日志存放路径：--logpath "c:\data\log\log.txt"
+            >004.设置日志的记录方式：--logappend
+            >005.设置数据库的端口号：--port 27000
+            >006.设置服务的名称：--serviceName "Name"
+            >007.设置服务的显示名称：--serviceDisplayName "DisplayName"
+            >008.添加到windows服务里：--install
+            >009.mongod --dbpath "d:\data\db" --logpath "d:\data\log\log.txt" -logappend --serviceName "MongoDB" --install
+        >02.移除服务
+            >001.mongod.exe --remove --serviceName "Name"
+        >03.启动/停止服务
+            >001.net start ServiceName
+            >002.net stop ServicceName
+    >4.MongoDB基本命令
+        >01.mongo --port 27017
+        >02.显示全部的数据库：show dbs
+        >03.切换数据库 use dbname
+        >04.show tables
+        >05.创建数据库 use newdb
+    >5.增删改查
+        >01.db.tableName.insert(obj)
+        >02.db.tableName.find(obj)
+        >03.db.tableName.findOne(obj)
+        >04.db.tableName.remove(obj,isFirst)
+            >001.参数1：删除条件
+            >002.参数2：是否只删除匹配到的第一条数据
+        >05.db.tableName.drop()
+        >06.db.dropDatabase()
+        >07.db.tableName.update({sex:'男'},{age:10},false,true)
+            >001.参数1：条件，
+            >002.参数2：替换，如果{$set:{y:100,x:10}}
+            >003.参数3：不存在是否创建：true：是，false，不创建
+            >004.参数4：是否更新全部符合条件数据：true：是，false：只更新第一条
+            >005. 更新单条记录: db.tableName.update(condition, newObj, false, false)
+            >006. 更新多条记录: db.tableName.update(condition, {$set:newObj}, false, true)
+
+
+    >6.mongodb中间件
+        >01.引入：mongoose
+        >02.连接数据库:mongoose.connect('mongodb://127.0.0.1/mydb',function(err){})
+        >03.Schema = mongoose.Schema; //一种以文件形式存储的数据库模型骨架，不具备数据库的操作能力
+        >04.User=new Schema(obj)
+        >05.方法：
+            >001.create(model,function(err){}) //由Schema发布生成的模型，具有抽象属性和行为的数据库操作对
+            >002.find(model,fields,sort,function(err,docs){})
+            >003.findOne(model,fields,function(err,docs){})
+            >004.findById(model,fields,function(err,docs){})
+            >005.update(model,newfields,options,function(err){})
+                >0001.options:{multi: true,overwrite:true}
+                    >00001.multi:多条记录更改
+
+            >006.remove(model,function(err){})
+
+
+
+
+
+    开启mongodb服务
+            1. mongod --dbpath "d:/data/db"
+            2. mongod --dbpath "d:/data/db" --logpath "d:/data/log" -logappend --serviceName "MongoDB" --install
+               net start MongoDB
+               net stop MongoDB
+    卸载服务
+            1. mongod --remove --serviceName "MongoDB"
+
+    客户端连接
+            1. mongo
+
+    >use mydb
+    >db.user.insert({username:'Jerry', age: 18, sex: '男'})      _id:ObjectId("567776789999898776")
+    >db.user.find()
+    >db.user.find({age: 18})
+    >db.user.findOne({age:18, sex:'男'})
+    >db.user.remove({age:18})
+    >db.user.update({sex:'男'},{$set:{sex:'女'}},false,true)
+    >db.user.drop()
+    >db.dropDatabase()
+
+
+    // 练习：
+    // 1. express+mongoose + jade + css       SEO 好
+    // 2. express+mongoose + angular + html + css  SEO 差差 需要使用其他方法解决
+
+
+    db.articles.insert({title: '标题1',content: '标题1内容', create_time:'2017-10-10'})
+    db.articles.insert({title: '标题2',content: '标题2内容', create_time:'2017-10-10'})
+    db.articles.insert({title: '标题3',content: '标题3内容', create_time:'2017-10-10'})
+    db.articles.insert({title: '标题4',content: '标题4内容', create_time:'2017-10-10'})
+    db.articles.insert({title: '标题5',content: '标题5内容', create_time:'2017-10-10'})
