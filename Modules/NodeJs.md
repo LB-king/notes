@@ -175,3 +175,20 @@ res.render('index.html',{name:"hello art-teplate"})
 
   
 
+- 常见命令
+
+  ```shell
+  
+  ```
+
+  
+
+### JSON-SERVER
+
+- 安装：
+
+  ```shell
+  npm install json-server -g
+  ```
+
+  
