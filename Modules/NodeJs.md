@@ -167,6 +167,12 @@ res.render('index.html',{name:"hello art-teplate"})
   mongod
   ```
 
+- 连接
+
+  ```shell
+  mongo
+  ```
+
 - 如果想要修改默认的存储目录，可以
 
   ```shell
@@ -178,10 +184,20 @@ res.render('index.html',{name:"hello art-teplate"})
 - 常见命令
 
   ```shell
-  
+  #查看本地数据库
+  show dbs
+  #切换到指定数据库，没有则新建
+  use db1
+  db.students.insertOne({name:'me'})
+  db.colletions.find()
   ```
 
-  
+- 设计表
+
+   id | username | password | gender | 444
+   :-: | :-: | :-: | :-: | :-:
+   aaa | bbb | ccc | ddd | eee
+   fff | ggg| hhh | iii | 000
 
 ### JSON-SERVER
 

@@ -1,9 +1,5 @@
 #### 1.去除编译过程的warning
 
-​	![](./微信截图_20190421151256.png) 
-
-​	
-
 .eslintrc.js root改为false
 
 
@@ -20,3 +16,6 @@ module.exports = {
     publicPath:process.env.NODE_ENV === 'production'?'./':'/',
 }
 ```
+
+#### 
+
