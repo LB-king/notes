@@ -140,7 +140,7 @@ parseInt('width: 12px;') // NaN
 在四则运算中，除了加法之外，其余都是数学计算，只有加法可能存在字符串拼接
 
 ```js
-console.log(‘10’ + 10) // '1010'
+console.log('10' + 10) // '1010'
 console.log('10' - 10) // 0
 console.log('10px' - 10) // NaN
 
